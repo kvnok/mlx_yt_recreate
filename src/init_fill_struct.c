@@ -31,7 +31,7 @@ char **fill_map(t_data *data) {
 	}
 	data->map[3][3] = '1';
 	data->map[4][2] = '1';
-	data->map[4][3] = '1';
+	// data->map[4][3] = '1';
 	data->map[4][4] = '1';
 	data->map[5][3] = '1';
 	data->map[y] = NULL;

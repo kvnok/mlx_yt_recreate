@@ -50,13 +50,25 @@ void rotation(t_data *data, int modifier) {
 }
 
 void back_and_forth(t_data *data, int modifier) {
-	data->player->px += data->player->pdx*(movespeed * modifier);
-	data->player->py += data->player->pdy*(movespeed * modifier);
+	float newX = data->player->px + data->player->pdx*(movespeed * modifier);
+	float newY = data->player->py + data->player->pdy*(movespeed * modifier);
+	float testmapX = newX / mapS;
+	float testmapY = newY / mapS;
+	if (data->map[(int)testmapY][(int)testmapX] == '0') {
+		data->player->px = newX;
+		data->player->py = newY;
+	}
 }
 
 void strafe(t_data *data, int modifier) {
-	data->player->px += data->player->pdy*(movespeed * modifier);
-	data->player->py -= data->player->pdx*(movespeed * modifier);
+	float newX = data->player->px + data->player->pdy*(movespeed * modifier);
+	float newY = data->player->py - data->player->pdx*(movespeed * modifier);
+	float testmapX = newX / mapS;
+	float testmapY = newY / mapS;
+	if (data->map[(int)testmapY][(int)testmapX] == '0') {
+		data->player->px = newX;
+		data->player->py = newY;
+	}
 }
 
 void loop_hook(void *param) {

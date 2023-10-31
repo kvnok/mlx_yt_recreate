@@ -10,12 +10,12 @@
 */
 
 void drawRays2D(t_data *data) {
-	int map[]= {//the map array. Edit to change level but keep the outer walls
+	int map[]= {
 		1,1,1,1,1,1,1,1,
 		1,0,0,0,0,0,0,1,
 		1,0,0,0,0,0,0,1,
 		1,0,0,1,0,0,0,1,
-		1,0,1,1,1,0,0,1,
+		1,0,1,0,1,0,0,1,
 		1,0,0,1,0,0,0,1,
 		1,0,0,0,0,0,0,1,
 		1,1,1,1,1,1,1,1,
@@ -154,8 +154,13 @@ void drawRays2D(t_data *data) {
 		// // glBegin(GL_LINES);
 		// glVertex2i(r*8+530,lineOff);
 		// glVertex2i(r*8+530,lineOff+lineH);
-		// glEnd();//draw vertical wall  
-
+		// glEnd();//draw vertical wall
+		data->bres->x1 = r*8+530;
+		data->bres->y1 = lineOff;
+		data->bres->x2 = r*8+530;
+		data->bres->y2 = lineOff+lineH;
+		data->bres->color = blue;
+		bres_draw_line(data);
 		ra=fix_angle(ra-1);
 		//go to next ray
 	}
