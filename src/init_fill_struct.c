@@ -29,9 +29,9 @@ char **fill_map(t_data *data) {
 		data->map[y][x] = '\0';
 		y++;
 	}
-	data->map[3][3] = '1';
+	data->map[2][3] = '1';
+	data->map[2][4] = '1';
 	data->map[4][2] = '1';
-	// data->map[4][3] = '1';
 	data->map[4][4] = '1';
 	data->map[5][3] = '1';
 	data->map[y] = NULL;
@@ -41,7 +41,7 @@ char **fill_map(t_data *data) {
 
 void init_data(t_data *data) {
 	data->mlx = mlx_init(WIDTH, HEIGHT, "mlx42pilot", true); //not out of bounds proof
-	// data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT); //not out of bounds proof
+	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT); //not out of bounds proof
 	data->map = fill_map(data);
 	data->colors[0] = red;
 	data->colors[1] = green;
@@ -54,7 +54,7 @@ void init_data(t_data *data) {
 	data->screen_map_w = mapX * mapS;
 	data->screen_map_h = mapY * mapS;
 	// data->mlx = mlx_init(data->screen_map_w, data->screen_map_h, "mlx42pilot", true);
-	data->img = mlx_new_image(data->mlx, data->screen_map_w, data->screen_map_h);
+	// data->img = mlx_new_image(data->mlx, data->screen_map_w, data->screen_map_h);
 	data->keep_going = true;
 
 	data->player = malloc(sizeof(t_player));

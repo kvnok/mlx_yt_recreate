@@ -15,8 +15,8 @@
 # include "../MLX42/include/MLX42/MLX42_Int.h"
 #include <time.h>
 
-#define WIDTH 1024
-#define HEIGHT 510
+#define WIDTH 1280
+#define HEIGHT 640
 
 /*
 could also test with

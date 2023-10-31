@@ -2,7 +2,8 @@
 
 void remake_image(t_data *data) {
 	mlx_delete_image(data->mlx, data->img);
-	data->img = mlx_new_image(data->mlx, data->screen_map_w, data->screen_map_h);
+	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	// data->img = mlx_new_image(data->mlx, data->screen_map_w, data->screen_map_h);
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
 }
 
@@ -109,7 +110,9 @@ void loop_hook(void *param) {
 		draw_2D_horizontals(data);
 		draw_player_square(data, data->player->px, data->player->py, red);
 		topdown_drawline(data);
-
+		// fill_coords(data, data->screen_map_w, 0,data->screen_map_w*2, 320, white);
+		fill_coords(data, data->screen_map_w, 0,data->screen_map_w*2, 160, yellow);
+		fill_coords(data, data->screen_map_w, 160,data->screen_map_w*2, 320, green);
 		drawRays2D(data);
 	}
 }
