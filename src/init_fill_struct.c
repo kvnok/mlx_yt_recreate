@@ -51,25 +51,27 @@ void init_data(t_data *data) {
 	data->colors[5] = grey;
 	data->colors[6] = yellow;
 
-	data->screen_map_w = mapX * map_block_size;
-	data->screen_map_h = mapY * map_block_size;
+	data->screen_map_w = mapX * mapS;
+	data->screen_map_h = mapY * mapS;
 	// data->mlx = mlx_init(data->screen_map_w, data->screen_map_h, "mlx42pilot", true);
 	data->img = mlx_new_image(data->mlx, data->screen_map_w, data->screen_map_h);
 	data->keep_going = true;
 
 	data->player = malloc(sizeof(t_player));
 	// old player init
-	for (int i = 2; i < mapX; i++) {
-		if (data->map[2][i] == '0') {
-			data->player->px = i * map_block_size;
-			break;
-		}
-	}
-	data->player->width = map_block_size/4;
-	data->player->height = map_block_size/4;
+	// for (int i = 2; i < mapX; i++) {
+	// 	if (data->map[2][i] == '0') {
+	// 		data->player->px = i * mapS;
+	// 		break;
+	// 	}
+	// }
+	data->player->width = mapS/4;
+	data->player->height = mapS/4;
 
-	data->player->py = 100;
-	data->player->pa = 90;
+	data->player->px = 400;
+	data->player->py = 400;
+
+	data->player->pa = 0;
 	data->player->pdx = cos(degrees_to_radians(data->player->pa));
 	data->player->pdy = -sin(degrees_to_radians(data->player->pa));
 	// bres

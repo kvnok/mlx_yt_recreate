@@ -15,8 +15,8 @@
 # include "../MLX42/include/MLX42/MLX42_Int.h"
 #include <time.h>
 
-#define WIDTH 1280
-#define HEIGHT 960
+#define WIDTH 1024
+#define HEIGHT 510
 
 /*
 could also test with
@@ -27,7 +27,7 @@ could also test with
 #define mapX 8
 #define mapY 8
 
-#define map_block_size 64
+#define mapS 64
 
 #define red 0xFF0000FF
 #define green 0x00FF00FF
@@ -91,7 +91,13 @@ int			fix_angle(int angle);
 void		print_map(char **map);
 
 // loophook.c
-void		loop_hook(void *param);
+void remake_image(t_data *data);
+void bres_draw_line(t_data *data);
+void topdown_drawline(t_data *data);
+void rotation(t_data *data, int modifier);
+void back_and_forth(t_data *data, int modifier);
+void strafe(t_data *data, int modifier);
+void loop_hook(void *param);
 
 // player.c
 void		draw_player_square(t_data *data, int x, int y, int color);
@@ -99,5 +105,8 @@ void		draw_player_square(t_data *data, int x, int y, int color);
 // cleanup.c
 void		free_map(t_data *data);
 void		cleanup(t_data *data);
+
+// drawRays2D.c
+void		drawRays2D(t_data *data);
 
 #endif

@@ -1,5 +1,11 @@
 #include "../include/stuff.h"
 
+void remake_image(t_data *data) {
+	mlx_delete_image(data->mlx, data->img);
+	data->img = mlx_new_image(data->mlx, data->screen_map_w, data->screen_map_h);
+	mlx_image_to_window(data->mlx, data->img, 0, 0);
+}
+
 void bres_draw_line(t_data *data)
 {
 	// print_coords(data);
@@ -30,8 +36,8 @@ void topdown_drawline(t_data *data) {
 	float pdy = data->player->pdy;
 	data->bres->x1 = px;
 	data->bres->y1 = py;
-	data->bres->x2 = px+(pdx*100);
-	data->bres->y2 = py+(pdy*100);
+	data->bres->x2 = px+(pdx*32);
+	data->bres->y2 = py+(pdy*32);
 	data->bres->color = 0x0000FFFF;
 	bres_draw_line(data);
 }
@@ -57,7 +63,7 @@ void loop_hook(void *param) {
 	t_data *data;
 
 	data = (t_data *)param;
-
+	remake_image(data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE)) {
 		data->keep_going = false;
 		cleanup(data);
@@ -91,5 +97,7 @@ void loop_hook(void *param) {
 		draw_2D_horizontals(data);
 		draw_player_square(data, data->player->px, data->player->py, red);
 		topdown_drawline(data);
+
+		drawRays2D(data);
 	}
 }
